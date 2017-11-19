@@ -1,18 +1,23 @@
 package com.paragrafxv.workhours.projectclientview;
 
 import android.content.Context;
+import android.icu.text.DateFormat;
+import android.support.annotation.BoolRes;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
 public class ProjectClientView extends LinearLayout {
     private View root;
     private Project project;
     private Client client;
+    private TextView projectTitle;
 
     public ProjectClientView(Context context) {
         super(context);
@@ -46,6 +51,13 @@ public class ProjectClientView extends LinearLayout {
         addView(root);
         project  = (Project) root.findViewById(R.id.project);
         client  = (Client) root.findViewById(R.id.client);
+        projectTitle = (TextView) root.findViewById(R.id.tv_project_title);
+    }
+
+    public void showOnlyClient(Boolean disp){
+        project.setVisibility(disp ? GONE : VISIBLE);
+        projectTitle.setVisibility(disp ? GONE : VISIBLE);
+
     }
 
     public void setProjectTitle(String projectTitle) {
