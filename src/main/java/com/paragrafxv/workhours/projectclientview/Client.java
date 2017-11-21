@@ -27,21 +27,34 @@ class Client extends android.support.v7.widget.AppCompatTextView{
 
     public void init(){
         setPadding(5,5,5,5);
+
+        setBackground(getResources().getDrawable(R.drawable.border_client));
     }
 
    public void setClientColor(@ColorInt int color){
-
-       setTextColor(getResources().getColor(R.color.ColorWhite));
-       setBackground(getResources().getDrawable(R.drawable.border_client));
-       
        GradientDrawable stroke = (GradientDrawable) getBackground();
-
        stroke.setColor(color);
-
        stroke.setStroke(2, color);
+       setWhiteText();
    }
 
+    public void setBackgroundTansparent(){
+       GradientDrawable stroke = (GradientDrawable) getBackground();
+       stroke.setColor(null);
+       setDarkText();
+   }
 
+    private void setWhiteText(){
+        setColorOfText(getResources().getColor(R.color.ColorWhite));
+    }
+
+    private void setDarkText(){
+        setColorOfText(getResources().getColor(R.color.colorPrimary));
+    }
+
+    public void setColorOfText(@ColorInt int color){
+       setTextColor(color);
+   }
 
 
 }

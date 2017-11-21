@@ -29,17 +29,19 @@ class Project extends android.support.v7.widget.AppCompatTextView{
 
     public void init(){
         setPadding(5,5,5,5);
+        setBackground(getResources().getDrawable(R.drawable.border_client));
     }
 
    public void setProjectColor(int color){
-
-
-       setBackground(getResources().getDrawable(R.drawable.border_client));
        GradientDrawable stroke = (GradientDrawable) getBackground();
-       stroke.setColor(null);
+       setTransparentBackground(stroke);
        setTextColor(color);
-       stroke.setStroke(2, color);
+       stroke.setStroke(2, color);//border
    }
+
+    private void setTransparentBackground( GradientDrawable stroke){
+        stroke.setColor(null);//background color
+    }
 
 
 
